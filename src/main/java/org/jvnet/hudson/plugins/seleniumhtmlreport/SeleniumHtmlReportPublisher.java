@@ -124,11 +124,14 @@ public class SeleniumHtmlReportPublisher extends Recorder implements Serializabl
             return;
         }
         for (TestResult result : results) {
+/*
             if (result.getNumCommandFailures() > 0) {
                 listener.getLogger().println("Set result to UNSTABLE");
                 build.setResult(Result.UNSTABLE);
             }
-            if (result.getNumCommandErrors() > 0) {
+*/
+// Change so that failures are set to FAILURE.
+            if (result.getNumCommandErrors() > 0 || result.getNumCommandFailures() > 0) {
                 listener.getLogger().println("Set result to FAILURE");
                 build.setResult(Result.FAILURE);
                 break;
